@@ -43,8 +43,6 @@ export default function PetsitterDetails({ petsitterId }) {
 
     const [cuidadorDetalles, setCuidadorDetalles] = useState('');
 
-    console.log(petsitterId);
-
     useEffect(() => {
        
         async function fetchDetails() {
