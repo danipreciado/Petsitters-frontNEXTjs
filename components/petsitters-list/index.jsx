@@ -59,31 +59,11 @@ export default function PetsittersTable() {
 
 
   // Search by name
-/* const searchByName = async (searchQuery) => {
-  fetch(`http://localhost:5500/api/petsitters/search/${searchQuery}`)
-      .then((response) => response.json())
-      .then((data) => {
-        if (Array.isArray(data) && data.length > 0) {
-        
-          const updatedCuidadores = data.map((cuidador) => {
-            const averageRating = calculateAverageRating(cuidador); 
-            return { ...cuidador, valoraciones: averageRating };
-          });
-          setCuidadores(updatedCuidadores);
-        } else {
-          setCuidadores(defaultCuidadores);
-        }
-      })
-      .catch((error) => {
-        console.error('Error fetching data:', error);
-      });
-}; */
-
 const searchByName = async (searchQuery) => {
   try {
     
     const response = await fetch(`http://localhost:5500/api/petsitters/search/${searchQuery}`, {
-      method: 'GET', // Adjust the HTTP method as needed
+      method: 'GET', 
       headers: headers,
     });
 
@@ -108,33 +88,14 @@ const searchByName = async (searchQuery) => {
 };
 
 
-// Search by state
-/* const searchByCity = async (searchQuery) => {
-  fetch(`http://localhost:5500/api/petsitters/searchByCity/${searchQuery}`)
-      .then((response) => response.json())
-      .then((data) => {
-        if (Array.isArray(data) && data.length > 0) {
-        
-          const updatedCuidadores = data.map((cuidador) => {
-            const averageRating = calculateAverageRating(cuidador); 
-            return { ...cuidador, valoraciones: averageRating };
-          });
-          setCuidadores(updatedCuidadores);
-        } else {
-          setCuidadores(defaultCuidadores);
-        }
-      })
-      .catch((error) => {
-        console.error('Error fetching data:', error);
-      });
-}; */
+// Search by city
 
 const searchByCity = async (searchQuery) => {
   try {
    
 
     const response = await fetch(`http://localhost:5500/api/petsitters/searchByCity/${searchQuery}`, {
-      method: 'GET', // Adjust the HTTP method as needed
+      method: 'GET', 
       headers: headers,
     });
 
@@ -158,28 +119,12 @@ const searchByCity = async (searchQuery) => {
   }
 };
 
-/* 
-  useEffect(() => {
-    fetch('http://localhost:5500/api/petsitters/list')
-      .then((response) => response.json())
-      .then((data) => {
-        const updatedCuidadores = data.map((cuidador) => {
-          const averageRating = calculateAverageRating(cuidador); 
-          return { ...cuidador, valoraciones: averageRating };
-        });
-        setCuidadores(updatedCuidadores);
-        setDefaultCuidadores(updatedCuidadores);
-      })
-      .catch((error) => {
-        console.error('Error fetching data:', error);
-      });
-  }, []); */
 
   useEffect(() => {
     try {
   
       fetch('http://localhost:5500/api/petsitters/list', {
-        method: 'GET', // Adjust the HTTP method as needed
+        method: 'GET', 
         headers: headers,
       })
         .then((response) => {
@@ -236,7 +181,7 @@ const searchByCity = async (searchQuery) => {
   return (
 
     <TableContainer sx={{ maxHeight: 440, boxShadow: 'none', width: '90%', margin: '0 auto', overflow: 'scroll' }}>
-      <StyledTable>
+      <StyledTable stickyHeader>
         <TableHead>
           <TableRow>
             {columns.map((column) => (
